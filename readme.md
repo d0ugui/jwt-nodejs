@@ -1,10 +1,10 @@
 # jwt-nodejs
 
-This API is built with TypeScript, Express, Prisma, and Docker, following some clean architecture and SOLID principles. It implements an authentication flow using JWT Tokens. The project employs design patterns like dependency inversion and factory patterns to ensure scalability and maintainability.
-
 |        Server Structure        |
 | :----------------------------: |
 | ![Server](./assets/server.png) |
+
+This is an API built with Node.js, Express, Docker, Prisma, and PostgreSQL, following some clean architecture and SOLID principles. It implements an authentication flow using JWT Tokens. The project employs design patterns like dependency inversion and factory patterns to ensure scalability and maintainability.
 
 ## Installation
 
