@@ -2,6 +2,7 @@ import { z } from 'zod';
 import { IController, IRequest, IResponse } from '../interfaces/IController';
 import { GetUserUseCase } from '../useCases/GetUserUseCase';
 import { InvalidCredentials } from '../errors/InvalidCredentials';
+import { AccountNotFound } from '../errors/AccountNotFound';
 
 export class GetUserController implements IController {
   constructor(private readonly getUserUseCase: GetUserUseCase) {}
@@ -29,6 +30,15 @@ export class GetUserController implements IController {
           statusCode: 401,
           body: {
             error: 'Invalid credentials.'
+          }
+        };
+      }
+
+      if (error instanceof AccountNotFound) {
+        return {
+          statusCode: 404,
+          body: {
+            error: 'Account not found.'
           }
         };
       }

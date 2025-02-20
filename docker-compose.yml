@@ -1,0 +1,10 @@
+services:
+  jwt-nodejs:
+    container_name: jwt-nodejs
+    image: bitnami/postgresql
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=jwt-nodejs
