@@ -2,6 +2,7 @@ import { hash } from 'bcryptjs';
 import { AccountAlreadyExists } from '../errors/AccountAlreadyExists';
 import { prismaClient } from '../libs/prismaClient';
 import { UsersRepository } from '../repositories/users-repository';
+import { Account } from '@prisma/client';
 
 interface IInput {
   name: string;
@@ -9,7 +10,7 @@ interface IInput {
   password: string;
 }
 
-type IOutput = void;
+type IOutput = Omit<Account, 'password'>;
 
 export class SignUpUseCase {
   constructor(private readonly usersRepository: UsersRepository) { }
@@ -22,12 +23,18 @@ export class SignUpUseCase {
 
     const hashedPassword = await hash(password, 8);
 
-    await prismaClient.account.create({
+    const account = await prismaClient.account.create({
       data: {
         name,
         email,
         password: hashedPassword
       }
     });
+
+    return {
+      id: account.id,
+      name: account.name,
+      email: account.email
+    };
   }
 }
