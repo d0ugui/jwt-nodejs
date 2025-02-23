@@ -23,12 +23,10 @@ export class SignUpUseCase {
 
     const hashedPassword = await hash(password, 8);
 
-    const account = await prismaClient.account.create({
-      data: {
-        name,
-        email,
-        password: hashedPassword
-      }
+    const account = await this.usersRepository.create({
+      name,
+      email,
+      password: hashedPassword
     });
 
     return {
