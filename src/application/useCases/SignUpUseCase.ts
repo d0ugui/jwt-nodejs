@@ -1,6 +1,5 @@
 import { hash } from 'bcryptjs';
 import { AccountAlreadyExists } from '../errors/AccountAlreadyExists';
-import { prismaClient } from '../libs/prismaClient';
 import { UsersRepository } from '../repositories/users-repository';
 import { Account } from '@prisma/client';
 
@@ -13,7 +12,7 @@ interface IInput {
 type IOutput = Omit<Account, 'password'>;
 
 export class SignUpUseCase {
-  constructor(private readonly usersRepository: UsersRepository) { }
+  constructor(private readonly usersRepository: UsersRepository) {}
   async execute({ name, email, password }: IInput): Promise<IOutput> {
     const accountAlreadyExists = await this.usersRepository.findByEmail(email);
 
@@ -26,13 +25,13 @@ export class SignUpUseCase {
     const account = await this.usersRepository.create({
       name,
       email,
-      password: hashedPassword
+      password: hashedPassword,
     });
 
     return {
       id: account.id,
       name: account.name,
-      email: account.email
+      email: account.email,
     };
   }
 }
