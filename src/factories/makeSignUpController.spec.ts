@@ -1,4 +1,3 @@
-import { describe, expect, test } from 'vitest';
 import { makeSignUpController } from './makeSignUpController';
 import { SignUpController } from '../application/controllers/SignUpController';
 

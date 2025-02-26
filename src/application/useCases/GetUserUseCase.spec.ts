@@ -1,4 +1,3 @@
-import { describe, expect, test } from 'vitest';
 import { InMemoryUsersRepository } from '../repositories/in-memory/in-memory-users-repository';
 import { makeGetUserUseCase } from '../../factories/makeGetUserUseCase';
 import { AccountNotFound } from '../errors/AccountNotFound';

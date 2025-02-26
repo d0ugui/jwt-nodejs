@@ -1,4 +1,3 @@
-import { beforeEach, describe, test, expect } from 'vitest';
 import { InMemoryUsersRepository } from '../repositories/in-memory/in-memory-users-repository';
 import { SignUpUseCase } from './SignUpUseCase';
 import { makeSignUpUseCase } from '../../factories/makeSignUpUseCase';

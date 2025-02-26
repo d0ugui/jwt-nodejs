@@ -1,4 +1,3 @@
-import { describe, expect, it, vi } from 'vitest';
 import { makeGetUserUseCase } from '../factories/makeGetUserUseCase';
 import { GetUserUseCase } from '../application/useCases/GetUserUseCase';
 import { InMemoryUsersRepository } from '../application/repositories/in-memory/in-memory-users-repository';
