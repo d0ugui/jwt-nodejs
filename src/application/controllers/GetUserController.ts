@@ -1,7 +1,6 @@
 import { z } from 'zod';
 import { IController, IRequest, IResponse } from '../interfaces/IController';
 import { GetUserUseCase } from '../useCases/GetUserUseCase';
-import { InvalidCredentials } from '../errors/InvalidCredentials';
 import { AccountNotFound } from '../errors/AccountNotFound';
 
 export class GetUserController implements IController {
@@ -22,15 +21,6 @@ export class GetUserController implements IController {
         return {
           statusCode: 400,
           body: error.issues,
-        };
-      }
-      
-      if (error instanceof InvalidCredentials) {
-        return {
-          statusCode: 401,
-          body: {
-            error: 'Invalid credentials.'
-          }
         };
       }
 
